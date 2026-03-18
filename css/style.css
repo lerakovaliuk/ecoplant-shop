@@ -1,0 +1,219 @@
+/* === 1. Базові налаштування та відносні одиниці === */
+/* Використовуємо відносні одиниці (rem, %) для масштабованості [cite: 117] */
+:root {
+    --primary-color: #2e7d32;
+    --bg-color: #f5f5f5;
+    --text-color: #333;
+    --card-bg: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* === 2. Шапка (Header) та Навігація === */
+/* Використання Flexbox для рівномірного розподілу [cite: 144] */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease; /* Плавна зміна стану [cite: 118] */
+}
+
+.nav-menu a:hover {
+    color: var(--primary-color);
+}
+
+/* Кнопка кошика для бекенду */
+.cart-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cart-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.cart-btn:hover {
+    background-color: #1b5e20;
+}
+
+.cart-counter {
+    background: white;
+    color: var(--primary-color);
+    padding: 0.1rem 0.4rem;
+    border-radius: 50%;
+    font-weight: bold;
+    margin-left: 0.3rem;
+}
+
+.burger-menu {
+    display: none; /* Приховано на десктопі */
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.burger-menu span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    transition: 0.3s;
+}
+
+/* === 3. Основний контент та Адаптивна сітка === */
+main {
+    padding: 2rem 5%;
+    min-height: 80vh;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+/* CSS Grid для інформаційних карток [cite: 115, 144] */
+.cards-container {
+    display: grid;
+    /* Магія адаптивності: картки самі підлаштовуються під ширину екрана */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* Анімація появи контенту  */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover-ефект [cite: 118] */
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.card-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover; /* Щоб фото рослин не розтягувалися непропорційно */
+}
+
+.card-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 1rem 0;
+}
+
+.buy-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--card-bg);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.buy-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* === 4. Підвал (Footer) === */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1.5rem 5%;
+    margin-top: auto;
+}
+
+/* === 5. Медіа-запити (Media Queries) для адаптивності  === */
+@media screen and (max-width: 768px) {
+    /* Трансформація меню на планшетах і смартфонах [cite: 114, 150] */
+    .burger-menu {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: -100%; /* Ховаємо меню за екран */
+        width: 100%;
+        background-color: var(--card-bg);
+        flex-direction: column;
+        text-align: center;
+        transition: left 0.4s ease; /* Плавне відкриття [cite: 118] */
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu.active {
+        left: 0; /* Клас, який ми будемо додавати через JavaScript */
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        padding: 2rem 0;
+        gap: 1.5rem;
+    }
+}
