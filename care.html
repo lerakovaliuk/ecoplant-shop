@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Догляд за рослинами - EcoPlant</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">EcoPlant</div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="care.html" class="active-link">Догляд</a></li>
+            </ul>
+        </nav>
+        <div class="cart-wrapper">
+            <button class="cart-btn" aria-label="Відкрити кошик">
+                Кошик <span class="cart-counter">0</span>
+            </button>
+            <button class="burger-menu" aria-label="Меню">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="page-title">Секрети догляду за вашими рослинами</h1>
+        
+        <div class="care-container">
+            <section class="care-article">
+                <div class="care-text">
+                    <h2>Правильне поливання</h2>
+                    <p>Більшість кімнатних рослин гине від надмірного поливу, а не від посухи. Завжди перевіряйте верхній шар ґрунту (близько 2-3 см) перед тим, як полити рослину. Якщо він сухий — час поливати. Використовуйте відстояну воду кімнатної температури.</p>
+                </div>
+            </section>
+
+            <section class="care-article reverse">
+                <div class="care-text">
+                    <h2>Освітлення</h2>
+                    <p>Не всі рослини люблять пряме сонце. Наприклад, сукуленти обожнюють південні вікна, а ось папороті та монстери краще почуваються у розсіяному світлі (східні або західні вікна). Якщо листя почало бліднути, можливо, рослині не вистачає світла.</p>
+                </div>
+            </section>
+
+            <section class="care-article">
+                <div class="care-text">
+                    <h2>Пересадка та ґрунт</h2>
+                    <p>Молоді рослини потребують пересадки щороку на весні, дорослі — раз на 2-3 роки. Обирайте горщик лише на 2-3 см більший за попередній. Обов'язково використовуйте дренаж (керамзит) на дні горщика, щоб уникнути загнивання коріння.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 EcoPlant. Всі права захищено.</p>
+            <p>Контакти: info@ecoplant.ua | +38 (099) 123-45-67</p>
+        </div>
+    </footer>
+
+    <div id="cart-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-cart">&times;</span>
+            <h2>Ваш кошик</h2>
+            <div class="cart-items">
+                <p>Поки що тут порожньо.</p>
+            </div>
+            <div class="cart-footer">
+                <h3>Всього: <span id="total-price">0</span> грн</h3>
+                <button class="checkout-btn">Оформити замовлення</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

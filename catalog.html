@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог - EcoPlant</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">EcoPlant</div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="catalog.html" class="active-link">Каталог</a></li>
+                <li><a href="care.html">Догляд</a></li>
+            </ul>
+        </nav>
+        <div class="cart-wrapper">
+            <button class="cart-btn" aria-label="Відкрити кошик">
+                Кошик <span class="cart-counter">0</span>
+            </button>
+            <button class="burger-menu" aria-label="Меню">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="page-title">Каталог кімнатних рослин</h1>
+        
+        <div class="filters">
+            <button class="filter-btn active">Всі</button>
+            <button class="filter-btn">Сукуленти</button>
+            <button class="filter-btn">Тіньолюбні</button>
+            <button class="filter-btn">Для новачків</button>
+        </div>
+
+        <div class="cards-container">
+            <article class="card">
+                <img src="assets/plant1.png" alt="Монстера" class="card-img">
+                <div class="card-info">
+                    <h3>Монстера Деліціоза</h3>
+                    <p class="price">450 грн</p>
+                    <button class="buy-btn">В кошик</button>
+                </div>
+            </article>
+            <article class="card">
+                <img src="assets/plant2.png" alt="Фікус" class="card-img">
+                <div class="card-info">
+                    <h3>Фікус Еластика</h3>
+                    <p class="price">320 грн</p>
+                    <button class="buy-btn">В кошик</button>
+                </div>
+            </article>
+            <article class="card">
+                <img src="assets/plant3.png" alt="Ечеверія" class="card-img">
+                <div class="card-info">
+                    <h3>Ечеверія (Сукулент)</h3>
+                    <p class="price">150 грн</p>
+                    <button class="buy-btn">В кошик</button>
+                </div>
+            </article>
+            <article class="card">
+                <img src="assets/plant4.png" alt="Заміокулькас" class="card-img">
+                <div class="card-info">
+                    <h3>Заміокулькас</h3>
+                    <p class="price">500 грн</p>
+                    <button class="buy-btn">В кошик</button>
+                </div>
+            </article>
+            <article class="card">
+                <img src="assets/plant5.png" alt="Сансев'єрія" class="card-img">
+                <div class="card-info">
+                    <h3>Сансев'єрія</h3>
+                    <p class="price">280 грн</p>
+                    <button class="buy-btn">В кошик</button>
+                </div>
+            </article>
+            <article class="card">
+                <img src="assets/plant6.png" alt="Спатіфілум" class="card-img">
+                <div class="card-info">
+                    <h3>Спатіфілум</h3>
+                    <p class="price">350 грн</p>
+                    <button class="buy-btn">В кошик</button>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 EcoPlant. Всі права захищено.</p>
+            <p>Контакти: info@ecoplant.ua | +38 (099) 123-45-67</p>
+        </div>
+    </footer>
+
+    <div id="cart-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-cart">&times;</span>
+            <h2>Ваш кошик</h2>
+            <div class="cart-items">
+                <p>Поки що тут порожньо. Додайте трохи зелені!</p>
+            </div>
+            <div class="cart-footer">
+                <h3>Всього: <span id="total-price">0</span> грн</h3>
+                <button class="checkout-btn">Оформити замовлення</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
