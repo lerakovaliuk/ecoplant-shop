@@ -1,0 +1,24 @@
+{
+  "name": "ecoplant-shop",
+  "version": "1.0.0",
+  "description": "Навчальний проєкт, розроблений в рамках лабораторної роботи №1 з дисципліни «WEB-орієнтовані технології. Backend розробки».",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lerakovaliuk/ecoplant-shop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lerakovaliuk/ecoplant-shop/issues"
+  },
+  "homepage": "https://github.com/lerakovaliuk/ecoplant-shop#readme",
+  "dependencies": {
+    "mysql2": "^3.20.0",
+    "sequelize": "^6.37.8"
+  }
+}
