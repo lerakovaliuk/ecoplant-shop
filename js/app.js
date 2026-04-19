@@ -28,3 +28,53 @@ window.addEventListener('click', (event) => {
         cartModal.style.display = 'none';
     }
 });
+
+// Приклад логіну на фронтенді
+async function loginUser(email, password) {
+    const response = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+    });
+    
+    const data = await response.json();
+    if (response.ok) {
+        // Зберігаємо токени у пам'ять браузера (localStorage)
+        localStorage.setItem("accessToken", data.accessToken);
+        alert("Вхід успішний!");
+    } else {
+        alert("Помилка: " + data.message);
+    }
+}
+
+async function getProfile() {
+    const token = localStorage.getItem("accessToken");
+    
+    const response = await fetch("http://localhost:3000/profile", {
+        method: "GET",
+        headers: { 
+            "Authorization": `Bearer ${token}` 
+        }
+    });
+    
+    if (response.ok) {
+        const user = await response.json();
+        console.log("Мої дані:", user);
+    } else {
+        alert("Ви не авторизовані!");
+    }
+}
+
+function logout() {
+    // Відправляємо запит на сервер, щоб стерти Refresh Token (Завдання 9)
+    const token = localStorage.getItem("accessToken");
+    fetch("http://localhost:3000/logout", {
+        method: "POST",
+        headers: { "Authorization": `Bearer ${token}` }
+    });
+
+    // Видаляємо токени з браузера
+    localStorage.removeItem("accessToken");
+    alert("Ви вийшли з системи!");
+    window.location.href = "index.html"; // Перекидаємо на головну
+}
