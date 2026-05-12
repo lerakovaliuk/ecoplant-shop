@@ -1,0 +1,8 @@
+{"level":"error","message":"Помилка: Тестова помилка сервера! | Маршрут: /test-error | Метод: GET","timestamp":"2026-05-08 16:19:03"}
+{"level":"error","message":"Тестова помилка сервера! - /test-error","timestamp":"2026-05-09 00:04:06"}
+{"level":"error","message":"Unexpected end of form - /upload","timestamp":"2026-05-09 00:07:30"}
+{"level":"error","message":"Тестова помилка сервера! - /test-error","timestamp":"2026-05-12 00:59:07"}
+{"level":"error","message":"Тестова помилка сервера! - /test-error","timestamp":"2026-05-12 00:59:08"}
+{"level":"error","message":"Недопустимий формат файлу. Дозволено: JPG, PNG, PDF. - /upload","timestamp":"2026-05-12 01:05:41"}
+{"level":"error","message":"Тестова помилка сервера! - /test-error","timestamp":"2026-05-12 12:06:56"}
+{"level":"error","message":"File too large - /upload","timestamp":"2026-05-12 12:14:09"}
