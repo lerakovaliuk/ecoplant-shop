@@ -195,8 +195,16 @@ app.use((err, req, res, next) => {
     res.status(err.status || 500).json({ error: err.message });
 });
 
-sequelize.sync({ alter: true }).then(() => {
-    app.listen(PORT, () => {
-        console.log(`Сервер запущено на порті ${PORT}. Документація: http://localhost:${PORT}/api-docs`);
+sequelize.sync({ alter: true })
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`Сервер запущено на порті ${PORT}.`);
+        });
+    })
+    .catch(err => {
+        console.warn("УВАГА: Базу даних не знайдено! Сервер запущено в режимі демонстрації Swagger.");
+        // Все одно запускаємо сервер, щоб показати Swagger в Інтернеті
+        app.listen(PORT, () => {
+            console.log(`Сервер запущено на порті ${PORT} (без БД).`);
+        });
     });
-});
