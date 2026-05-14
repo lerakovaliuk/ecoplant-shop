@@ -4,7 +4,8 @@
   "description": "Навчальний проєкт, розроблений в рамках лабораторної роботи №1 з дисципліни «WEB-орієнтовані технології. Backend розробки».",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,8 @@
     "node-cache": "^5.1.2",
     "nodemailer": "^8.0.5",
     "sequelize": "^6.37.8",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "winston": "^3.19.0"
   },
   "devDependencies": {
