@@ -1206,3 +1206,6 @@
 {"level":"info","message":"GET /products - 0ms","timestamp":"2026-05-14 11:51:54"}
 {"level":"info","message":"GET /products - 0ms","timestamp":"2026-05-14 11:51:54"}
 {"level":"info","message":"GET /products - 0ms","timestamp":"2026-05-14 11:51:54"}
+{"level":"info","message":"GET /products - 5ms","timestamp":"2026-05-14 12:54:10"}
+{"level":"info","message":"GET /products - 0ms","timestamp":"2026-05-14 12:54:13"}
+{"level":"info","message":"GET /products - 1ms","timestamp":"2026-05-14 12:54:29"}
