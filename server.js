@@ -14,8 +14,8 @@ const multer = require('multer');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 
-const sequelize = require('./config/database');
-const User = require('./models/User');
+// const sequelize = require('./config/database');
+// const User = require('./models/User');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -54,13 +54,14 @@ const swaggerOptions = {
 };
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
-
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+// === ТИМЧАСОВА БАЗА ДАНИХ ДЛЯ RENDER ===
 const products = [
     { id: 1, name: "Laptop", price: 30000 },
     { id: 2, name: "Phone", price: 20000 }
 ];
+const users = [];
 
 /**
  * @swagger
@@ -145,11 +146,16 @@ app.post("/register", async (req, res) => {
     try {
         const { name, email, password, confirmPassword } = req.body;
         if (password !== confirmPassword) return res.status(400).json({ message: "Паролі не співпадають" });
-        const existingUser = await User.findOne({ where: { email } });
+        
+        // Шукаємо користувача в масиві
+        const existingUser = users.find(u => u.email === email);
         if (existingUser) return res.status(400).json({ message: "Email вже існує" });
+        
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = await User.create({ name, email, password: hashedPassword, isEmailConfirmed: true });
-        res.status(201).json({ message: "Користувача створено", user: newUser });
+        const newUser = { id: users.length + 1, name, email, password: hashedPassword };
+        users.push(newUser); // Додаємо в масив
+        
+        res.status(201).json({ message: "Користувача створено", user: { id: newUser.id, name, email } });
     } catch (error) {
         res.status(500).json({ message: "Помилка сервера" });
     }
@@ -180,7 +186,10 @@ const loginLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 5 });
 app.post("/login", loginLimiter, async (req, res) => {
     try {
         const { email, password } = req.body;
-        const user = await User.findOne({ where: { email } });
+        
+        // Шукаємо користувача в масиві
+        const user = users.find(u => u.email === email);
+        
         if (!user || !(await bcrypt.compare(password, user.password))) {
             return res.status(400).json({ message: "Невірні дані" });
         }
@@ -195,16 +204,7 @@ app.use((err, req, res, next) => {
     res.status(err.status || 500).json({ error: err.message });
 });
 
-sequelize.sync({ alter: true })
-    .then(() => {
-        app.listen(PORT, () => {
-            console.log(`Сервер запущено на порті ${PORT}.`);
-        });
-    })
-    .catch(err => {
-        console.warn("УВАГА: Базу даних не знайдено! Сервер запущено в режимі демонстрації Swagger.");
-        // Все одно запускаємо сервер, щоб показати Swagger в Інтернеті
-        app.listen(PORT, () => {
-            console.log(`Сервер запущено на порті ${PORT} (без БД).`);
-        });
-    });
+// ПРЯМИЙ ЗАПУСК СЕРВЕРА
+app.listen(PORT, () => {
+    console.log(`Сервер запущено на порті ${PORT}.`);
+});
